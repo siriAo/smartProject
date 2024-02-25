@@ -1,0 +1,21 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/govern
+      #      username: root
+      #      password: root
+      host: localhost
+      port: 27017
+      database: test
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    database: mysql
+    hibernate:
+      ddl-auto: update
+
+
