@@ -49,6 +49,7 @@
       <template #title>Navigator Four</template>
     </el-menu-item>
   </el-menu>
+  <router-view/>
 </template>
 
 <script lang="ts" setup>
