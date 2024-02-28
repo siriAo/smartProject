@@ -13,14 +13,13 @@
           @close="handleClose"
       >
         <el-menu-item index="6">
-          <template #title>详情</template>
+          <el-icon><Histogram /></el-icon>
+          <template #title>数据总览</template>
         </el-menu-item>
         <el-sub-menu index="1">
           <template #title>
-            <el-icon>
-              <location/>
-            </el-icon>
-            <span>Navigator One</span>
+            <el-icon><Document /></el-icon>
+            <span>数据汇总</span>
           </template>
           <el-menu-item-group>
             <template #title><span>Group One</span></template>
@@ -36,22 +35,20 @@
           </el-sub-menu>
         </el-sub-menu>
         <el-menu-item index="2">
-          <el-icon>
-            <icon-menu/>
-          </el-icon>
-          <template #title>Navigator Two</template>
+          <el-icon><UserFilled/></el-icon>
+          <template #title>用户管理</template>
         </el-menu-item>
         <el-menu-item index="3" disabled>
           <el-icon>
             <document/>
           </el-icon>
-          <template #title>Navigator Three</template>
+          <template #title>管理员操作</template>
         </el-menu-item>
         <el-menu-item index="4">
           <el-icon>
             <setting/>
           </el-icon>
-          <template #title>Navigator Four</template>
+          <template #title>设置</template>
         </el-menu-item>
       </el-menu>
     </el-aside>
