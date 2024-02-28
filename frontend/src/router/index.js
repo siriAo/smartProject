@@ -1,19 +1,26 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import Home from '../components/home/Home.vue'
+import Home from '@/components/home/Home.vue'
 import User from "@/components/user/User.vue";
 import Login from "@/components/login/Login.vue";
+import Doc from "@/components/doc/Doc.vue";
+import Demo from "@/components/Demo.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
         {
             path: '/',
-            redirect: '/login'
+            redirect: '/demo'
         },
         {
-          path: '/login',
-          name: 'login',
-          component: Login
+            path: '/demo',
+            name: 'demo',
+            component: Demo
+        },
+        {
+            path: '/login',
+            name: 'login',
+            component: Login
         },
         {
             path: '/home',
@@ -21,9 +28,14 @@ const router = createRouter({
             component: Home,
             children: [
                 {
-                    path: '/user',// 0是普通订单 1是秒杀订单,
+                    path: 'user',
                     component: User,
                     name: "user"
+                },
+                {
+                    path: 'doc',
+                    component: Doc,
+                    name: "doc"
                 }
             ]
         },
