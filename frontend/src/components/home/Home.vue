@@ -1,11 +1,11 @@
 <template>
   <el-container>
 
-    <el-header style="height: auto">
+    <el-header style="height: 64px">
       <el-row class="block-col-2" justify="end">
         <el-col :span="4">
           <el-dropdown size="large">
-        <span class="el-dropdown-link" style="font-size: larger;text-align: right ">
+        <span class="el-dropdown-link" style="font-size: larger;text-align: right;margin-top: 32px ">
           菠萝偷吃豆腐<el-icon class="el-icon--right"><arrow-down/></el-icon>
         </span>
             <template #dropdown>
@@ -26,19 +26,23 @@
           <el-radio-button :label="true">collapse</el-radio-button>
         </el-radio-group>
         <el-menu
-            default-active="2"
+            default-active="1"
             class="el-menu-vertical-demo"
             :collapse="isCollapse"
             @open="handleOpen"
             @close="handleClose"
         >
-          <el-menu-item index="6">
+          <el-menu-item index="1">
+            <el-icon><Plus /></el-icon>
+            <template #title>新建文档</template>
+          </el-menu-item>
+          <el-menu-item index="2">
             <el-icon>
               <Histogram/>
             </el-icon>
             <template #title>数据总览</template>
           </el-menu-item>
-          <el-sub-menu index="1">
+          <el-sub-menu index="3">
             <template #title>
               <el-icon>
                 <Document/>
@@ -46,12 +50,12 @@
               <span>数据汇总</span>
             </template>
             <el-menu-item-group>
-              <template #title><span>Group One</span></template>
-              <el-menu-item index="1-1">item one</el-menu-item>
-              <el-menu-item index="1-2">item two</el-menu-item>
+              <template #title><span>上海</span></template>
+              <el-menu-item index="1-1">回复选登</el-menu-item>
+              <el-menu-item index="1-2">领导信箱</el-menu-item>
             </el-menu-item-group>
-            <el-menu-item-group title="Group Two">
-              <el-menu-item index="1-3">item three</el-menu-item>
+            <el-menu-item-group title="武汉">
+              <el-menu-item index="1-3">城市留言板</el-menu-item>
             </el-menu-item-group>
             <el-sub-menu index="1-4">
               <template #title><span>item four</span></template>
@@ -64,13 +68,13 @@
             </el-icon>
             <template #title>用户管理</template>
           </el-menu-item>
-          <el-menu-item index="3" disabled>
+          <el-menu-item index="4" disabled>
             <el-icon>
               <document/>
             </el-icon>
             <template #title>管理员操作</template>
           </el-menu-item>
-          <el-menu-item index="4">
+          <el-menu-item index="5">
             <el-icon>
               <setting/>
             </el-icon>
@@ -104,7 +108,7 @@ import {
   Setting,
 } from '@element-plus/icons-vue'
 
-const isCollapse = ref(true)
+const isCollapse = ref(false)
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }

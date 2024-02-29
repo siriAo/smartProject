@@ -5,6 +5,7 @@ import UserManagement from "@/components/user/UserManagement.vue";
 import Login from "@/components/login/Login.vue";
 import Doc from "@/components/doc/Doc.vue";
 import Demo from "@/components/Demo.vue";
+import NewDoc from "@/components/doc/NewDoc.vue";
 
 
 const router = createRouter({
@@ -12,7 +13,7 @@ const router = createRouter({
     routes: [
         {
             path: '/',
-            redirect: '/doc'
+            redirect: '/home/newDoc'
         },
         {
             path: '/demo',
@@ -29,6 +30,11 @@ const router = createRouter({
             name: 'home',
             component: Home,
             children: [
+                {
+                    path: 'newDoc',
+                    component: NewDoc,
+                    name: "newDoc"
+                },
                 {
                     path: 'user',
                     component: User,

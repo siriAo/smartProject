@@ -18,7 +18,7 @@
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input v-model="form.password" type="password" maxlength="20" style="margin-top: 10px" placeholder="密码">
+          <el-input v-model="form.password" maxlength="20" type="password" style="margin-top: 10px" placeholder="密码">
             <template #prefix>
               <el-icon>
                 <Lock/>
@@ -48,6 +48,9 @@
     <div>
       <el-button style="width: 270px" @click="router.push('/register')" type="warning" plain>注册账号</el-button>
     </div>
+    <div>
+      <el-button style="width: 270px;margin-top: 10px" @click="router.push('/home/user')" type="warning"  plain>匿名提交</el-button>
+    </div>
   </div>
 </template>
 
@@ -66,10 +69,10 @@ const form = reactive({
 
 const rules = {
   username: [
-    { required: true, message: '请输入用户名' }
+    {required: true, message: '请输入用户名'}
   ],
   password: [
-    { required: true, message: '请输入密码'}
+    {required: true, message: '请输入密码'}
   ]
 }
 

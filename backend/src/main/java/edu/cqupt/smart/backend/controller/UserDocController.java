@@ -24,13 +24,10 @@ public class UserDocController {
             @PathVariable("userId") Long userId,
             @RequestParam("title") String title, @RequestParam("content") String content) {
         System.out.println("Controller提交文档 " + "userId=" + userId + ' ' + title + ' ' + content);
+
 //        匿名用户userId为0
         Boolean result = true;
-        if (userId == 0L) {
-            result = userDocService.submit(new UserDoc(Long.valueOf(0), title, content));
-        } else {
-            result = userDocService.submit(new UserDoc(userId, title, content));
-        }
+        result = userDocService.submit(new UserDoc(userId, title, content));
         if (!result) {
             return "提交失败";
         }
@@ -54,6 +51,7 @@ public class UserDocController {
     @GetMapping("/{userId}")
     public List<UserDoc> queryDocByUserId(@PathVariable("userId") Long userId) {
         System.out.println("Controller查询用户文档" + "userId=" + userId);
+
         List<UserDoc> result = userDocService.queryByUserId(userId);
         return result;
     }
