@@ -1,11 +1,13 @@
 import {createRouter, createWebHistory} from 'vue-router'
+import Login from "@/components/login/Login.vue";
+import Register from "@/components/login/Register.vue";
 import Home from '@/components/home/Home.vue'
 import User from "@/components/user/User.vue";
 import UserManagement from "@/components/user/UserManagement.vue";
-import Login from "@/components/login/Login.vue";
 import Doc from "@/components/doc/Doc.vue";
-import Demo from "@/components/Demo.vue";
 import NewDoc from "@/components/doc/NewDoc.vue";
+import Demo from "@/components/Demo.vue";
+
 
 
 const router = createRouter({
@@ -13,7 +15,7 @@ const router = createRouter({
     routes: [
         {
             path: '/',
-            redirect: '/home/newDoc'
+            redirect: '/home/login'
         },
         {
             path: '/demo',
@@ -24,6 +26,11 @@ const router = createRouter({
             path: '/login',
             name: 'login',
             component: Login
+        },
+        {
+            path: '/register',
+            name: 'register',
+            component: Register
         },
         {
             path: '/home',

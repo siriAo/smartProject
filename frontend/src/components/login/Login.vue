@@ -77,6 +77,7 @@ const rules = {
 }
 
 function userLogin() {
+  router.push('/home')
   // formRef.value.validate((isValid) => {
   //   if(isValid) {
   //     login(form.username, form.password, form.remember, () => router.push("/index"))

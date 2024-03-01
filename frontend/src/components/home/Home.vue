@@ -10,7 +10,7 @@
         </span>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item :icon="CirclePlusFilled">我的信息</el-dropdown-item>
+                <el-dropdown-item :icon="CirclePlusFilled" @click="router.push('/home/user')">我的信息</el-dropdown-item>
                 <el-dropdown-item :icon="CircleCheck">登出</el-dropdown-item>
               </el-dropdown-menu>
             </template>
@@ -32,7 +32,7 @@
             @open="handleOpen"
             @close="handleClose"
         >
-          <el-menu-item index="1">
+          <el-menu-item @click="router.push('/home/newDoc')" index="1">
             <el-icon><Plus /></el-icon>
             <template #title>新建文档</template>
           </el-menu-item>
@@ -62,11 +62,11 @@
               <el-menu-item index="1-4-1">item one</el-menu-item>
             </el-sub-menu>
           </el-sub-menu>
-          <el-menu-item index="2">
+          <el-menu-item @click="router.push('/home/user')" index="2">
             <el-icon>
               <UserFilled/>
             </el-icon>
-            <template #title>用户管理</template>
+            <template #title>我的信息</template>
           </el-menu-item>
           <el-menu-item index="4" disabled>
             <el-icon>
@@ -101,6 +101,7 @@ import {
   Plus,
 } from '@element-plus/icons-vue'
 import {ref} from 'vue'
+import router from "@/router";
 import {
   Document,
   Menu as IconMenu,
