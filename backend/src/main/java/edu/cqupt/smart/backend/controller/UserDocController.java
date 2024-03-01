@@ -2,10 +2,9 @@ package edu.cqupt.smart.backend.controller;
 
 import edu.cqupt.smart.backend.entity.UserDoc;
 import edu.cqupt.smart.backend.service.inter.UserDocService;
+import edu.cqupt.smart.backend.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * @Package_Name: edu.cqupt.smart.backend.controller
@@ -20,41 +19,27 @@ public class UserDocController {
     private UserDocService userDocService;
 
     @PostMapping("/{userId}")
-    public String submit(
-            @PathVariable("userId") Long userId,
-            @RequestParam("title") String title, @RequestParam("content") String content) {
-        System.out.println("Controller提交文档 " + "userId=" + userId + ' ' + title + ' ' + content);
-
-//        匿名用户userId为0
-        Boolean result = true;
-        result = userDocService.submit(new UserDoc(userId, title, content));
-        if (!result) {
-            return "提交失败";
-        }
-        return "提交成功";
+    public Result submit(
+            @PathVariable("userId") Long userId, //  匿名用户userId为0
+            @RequestParam("title") String title,
+            @RequestParam("content") String content) {
+        //校验用户是否存在 可从token中获取
+        return userDocService.submit(new UserDoc(userId, title, content));
     }
 
 
     @PutMapping("/{userId}/{docId}")
-    public String update(
-            @PathVariable("userId") Long userId, @PathVariable("docId") Long docId,
-            @RequestParam("title") String title, @RequestParam("content") String content) {
-        System.out.println("Controller更新文档 " + "userId=" + userId + ' ' + "docId=" + docId + ' ' + title + ' ' + content);
-
-        Boolean result = userDocService.update(new UserDoc(docId, userId, title, content));
-        if (!result) {
-            return "更新失败";
-        }
-        return "更新成功";
+    public Result update(
+            @PathVariable("userId") Long userId,
+            @PathVariable("docId") Long docId,
+            @RequestParam("title") String title,
+            @RequestParam("content") String content) {
+        return userDocService.update(new UserDoc(docId, userId, title, content));
     }
 
     @GetMapping("/{userId}")
-    public List<UserDoc> queryDocByUserId(@PathVariable("userId") Long userId) {
-        System.out.println("Controller查询用户文档" + "userId=" + userId);
-
-        List<UserDoc> result = userDocService.queryByUserId(userId);
-        return result;
+    public Result queryDocByUserId(@PathVariable("userId") Long userId) {
+        return userDocService.queryByUserId(userId);
     }
-
 
 }

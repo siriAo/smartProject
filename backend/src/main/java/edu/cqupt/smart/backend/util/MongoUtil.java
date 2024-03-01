@@ -13,9 +13,9 @@ import lombok.Data;
 @AllArgsConstructor
 public class MongoUtil {
     // bug:当前面删除后id会占用已经使用过的id
-    private Long userDocCount;
+    private Long docCount;
 
-    public void userDocSelfIncrease() {
-        this.userDocCount++;
+    public void selfIncrease() {
+        this.docCount++;
     }
 }

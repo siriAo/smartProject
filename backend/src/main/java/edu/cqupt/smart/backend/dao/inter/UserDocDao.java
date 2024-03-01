@@ -19,7 +19,7 @@ public interface UserDocDao {
      * @param userDoc
      * @return
      */
-    public Boolean submit(UserDoc userDoc);
+    public UserDoc submit(UserDoc userDoc);
 
     /**
      * 更新用户文档
@@ -27,7 +27,7 @@ public interface UserDocDao {
      * @param userDoc
      * @return
      */
-    public Boolean update(UserDoc userDoc);
+    public UserDoc update(UserDoc userDoc);
 
     /**
      * 查询docId文档

@@ -3,7 +3,6 @@ package edu.cqupt.smart.backend.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.MongoId;
@@ -25,10 +24,8 @@ public class UserDoc {
     private Long id;
     @Field("userId")
     private Long userId;
-    @NonNull
     @Field("title")
     private String title;
-    @NonNull
     @Field("content")
     private String content;
 

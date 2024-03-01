@@ -4,10 +4,12 @@ import edu.cqupt.smart.backend.dao.inter.UserDocDao;
 import edu.cqupt.smart.backend.entity.UserDoc;
 import edu.cqupt.smart.backend.util.MongoUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
@@ -26,40 +28,36 @@ public class UserDocDaoImpl implements UserDocDao {
     public MongoUtil mongoUtil;
 
     @Override
-    public Boolean submit(UserDoc userDoc) {
-        userDoc.setId(mongoUtil.getUserDocCount());
-        mongoUtil.userDocSelfIncrease();
-
-        System.out.println("Dao提交文档" + userDoc.toString());
-        if (mongoOp.insert(userDoc) == null) {
-            return false;
-        }
-        return true;
+    public UserDoc submit(UserDoc userDoc) {
+        userDoc.setId(mongoUtil.getDocCount());
+        mongoUtil.selfIncrease();
+        return mongoOp.insert(userDoc);
     }
 
     @Override
-    public Boolean update(UserDoc userDoc) {
-        System.out.println("Dao更新文档" + userDoc.toString());
-        if (mongoOp.save(userDoc) == null) {
-            return false;
-        }
-        return true;
+    public UserDoc update(UserDoc userDoc) {
+        return mongoOp.save(userDoc);
     }
 
     @Override
     public UserDoc queryByDocId(Long docId) {
-        UserDoc result = mongoOp.query(UserDoc.class)
-                .matching(query(where("id").is(docId))).oneValue();
-        System.out.println("查询docId=" + docId + "的文档" + result.toString());
-        return result;
+        try {
+            Optional<UserDoc> result = mongoOp.query(UserDoc.class)
+                    .matching(query(where("id").is(docId)))
+                    .one();
+            if (result.isEmpty()) return null;
+            return result.get();
+        } catch (IncorrectResultSizeDataAccessException e) {
+            return null;
+        } finally {
+            return null;
+        }
     }
 
     @Override
     public List<UserDoc> queryByUserId(Long userId) {
-        List<UserDoc> result = mongoOp.query(UserDoc.class)
+        return mongoOp.query(UserDoc.class)
                 .matching(query(where("userId").is(userId)))
                 .all();
-        System.out.println("Dao查询用户" + userId + "文档" + result.toString());
-        return result;
     }
 }
