@@ -4,7 +4,7 @@ import edu.cqupt.smart.backend.dao.inter.UserDocDao;
 import edu.cqupt.smart.backend.entity.UserDoc;
 import edu.cqupt.smart.backend.service.inter.UserDocService;
 import edu.cqupt.smart.backend.util.Result;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.List;
  */
 @Service
 public class UserDocServiceImpl implements UserDocService {
-    @Autowired
+    @Resource
     private UserDocDao userDocDao;
 
     @Override

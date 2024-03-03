@@ -3,7 +3,7 @@ package edu.cqupt.smart.backend.controller;
 import edu.cqupt.smart.backend.entity.User;
 import edu.cqupt.smart.backend.service.UserService;
 import edu.cqupt.smart.backend.util.Result;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    @Autowired
+    @Resource
     private UserService userService;
 
     @PostMapping("/login")
@@ -27,6 +27,14 @@ public class UserController {
     @GetMapping("/{userId}")
     public Result User(@PathVariable("userId") Long userId) {
         return userService.getUserById(userId);
+    }
+
+    @PutMapping()
+    public Result updateUser(@RequestParam("userId") Long userId,
+                             @RequestParam("nickName") String nickName,
+                             @RequestParam("userName") String userName,
+                             @RequestParam("password") String password){
+        return userService.updateUser(new User(userId,nickName, userName, password));
     }
 
     @PostMapping()

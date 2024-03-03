@@ -3,7 +3,7 @@ package edu.cqupt.smart.backend.service;
 import edu.cqupt.smart.backend.dao.UserRepository;
 import edu.cqupt.smart.backend.entity.User;
 import edu.cqupt.smart.backend.util.Result;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -16,13 +16,13 @@ import java.util.Optional;
  */
 @Service
 public class UserService {
-    @Autowired
+    @Resource
     private UserRepository userRepository;
 
-    public Result check(User user){
-        System.out.println("用户登录"+user);
+    public Result check(User user) {
+        System.out.println("用户登录" + user);
         // JWT校验
-        return Result.ok().addData("token","需要更改");
+        return Result.ok().addData("token", "需要更改");
     }
 
     public Result getUserById(Long userId) {
@@ -32,6 +32,13 @@ public class UserService {
         User user = r.get();
         user.setPassword("null");
         return Result.ok().addData("user", user);
+    }
+
+    public Result updateUser(User user) {
+        System.out.println("更新User" + user);
+        User result = userRepository.save(user); // Hibernate已经在save()中实现了select和update
+        if (result.getUserId() == null) return Result.error();
+        return Result.ok();
     }
 
     public Result addUser(User user) {

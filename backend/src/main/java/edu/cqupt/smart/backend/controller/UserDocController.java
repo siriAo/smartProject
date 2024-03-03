@@ -3,7 +3,7 @@ package edu.cqupt.smart.backend.controller;
 import edu.cqupt.smart.backend.entity.UserDoc;
 import edu.cqupt.smart.backend.service.inter.UserDocService;
 import edu.cqupt.smart.backend.util.Result;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/doc/user")
 public class UserDocController {
-    @Autowired
+    @Resource
     private UserDocService userDocService;
 
     @PostMapping("/{userId}")
