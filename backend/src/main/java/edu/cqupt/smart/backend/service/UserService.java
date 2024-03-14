@@ -1,8 +1,9 @@
 package edu.cqupt.smart.backend.service;
 
+import edu.cqupt.smart.backend.config.security.handler.DBUserDetailsManager;
 import edu.cqupt.smart.backend.dao.UserRepository;
-import edu.cqupt.smart.backend.entity.User;
-import edu.cqupt.smart.backend.util.Result;
+import edu.cqupt.smart.backend.entity.po.User;
+import edu.cqupt.smart.backend.entity.vo.Result;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,8 @@ import java.util.Optional;
 public class UserService {
     @Resource
     private UserRepository userRepository;
+    @Resource
+    private DBUserDetailsManager dbUserDetailsManager;
 
     public Result check(User user) {
         System.out.println("用户登录" + user);
@@ -36,15 +39,15 @@ public class UserService {
 
     public Result updateUser(User user) {
         System.out.println("更新User" + user);
-        User result = userRepository.save(user); // Hibernate已经在save()中实现了select和update
-        if (result.getUserId() == null) return Result.error();
+        User result = userRepository.save(user); // Hibernate已经在save()中根据主键实现了select和update（自动比较后更新）
+        if (result.getUserid() == null) return Result.error();
         return Result.ok();
     }
 
     public Result addUser(User user) {
         System.out.println("添加用户" + user);
         User result = userRepository.save(user);
-        if (result.getUserId() == null) return Result.error();
+        if (result.getUserid() == null) return Result.error();
         return Result.ok();
     }
 }

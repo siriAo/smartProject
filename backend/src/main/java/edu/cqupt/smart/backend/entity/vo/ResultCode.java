@@ -1,4 +1,4 @@
-package edu.cqupt.smart.backend.util;
+package edu.cqupt.smart.backend.entity.vo;
 
 /**
  * @Package_Name: edu.cqupt.smart.backend.util

@@ -1,8 +1,8 @@
 package edu.cqupt.smart.backend.controller;
 
-import edu.cqupt.smart.backend.entity.User;
+import edu.cqupt.smart.backend.entity.po.User;
 import edu.cqupt.smart.backend.service.UserService;
-import edu.cqupt.smart.backend.util.Result;
+import edu.cqupt.smart.backend.entity.vo.Result;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 

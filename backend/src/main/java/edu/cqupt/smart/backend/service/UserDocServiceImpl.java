@@ -3,7 +3,7 @@ package edu.cqupt.smart.backend.service;
 import edu.cqupt.smart.backend.dao.inter.UserDocDao;
 import edu.cqupt.smart.backend.entity.UserDoc;
 import edu.cqupt.smart.backend.service.inter.UserDocService;
-import edu.cqupt.smart.backend.util.Result;
+import edu.cqupt.smart.backend.entity.vo.Result;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 

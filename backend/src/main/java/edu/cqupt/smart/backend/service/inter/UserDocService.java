@@ -1,9 +1,7 @@
 package edu.cqupt.smart.backend.service.inter;
 
 import edu.cqupt.smart.backend.entity.UserDoc;
-import edu.cqupt.smart.backend.util.Result;
-
-import java.util.List;
+import edu.cqupt.smart.backend.entity.vo.Result;
 
 /**
  * @Package_Name: edu.cqupt.smart.backend.service

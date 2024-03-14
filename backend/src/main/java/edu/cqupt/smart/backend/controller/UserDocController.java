@@ -2,7 +2,7 @@ package edu.cqupt.smart.backend.controller;
 
 import edu.cqupt.smart.backend.entity.UserDoc;
 import edu.cqupt.smart.backend.service.inter.UserDocService;
-import edu.cqupt.smart.backend.util.Result;
+import edu.cqupt.smart.backend.entity.vo.Result;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 

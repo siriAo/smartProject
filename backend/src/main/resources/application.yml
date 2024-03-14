@@ -1,5 +1,8 @@
 spring:
   security:
+    jwt:
+      secret: cxvisdkjidsficvlidsfsadt
+      expire: 7
     user:
       name: admin
       password: admin
